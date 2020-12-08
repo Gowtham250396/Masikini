@@ -1,13 +1,13 @@
 package org.signup;
 
 import java.awt.AWTException;
-import java.awt.event.KeyEvent;
 import java.util.List;
 
 import org.baseclass.LibGlobal;
 import org.loginpojo.CodePage;
 import org.loginpojo.SignUpButton;
 import org.loginpojo.SignUpDetails;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.projectobjectmodel.POM;
 
@@ -51,8 +51,25 @@ public class SignUpPage extends LibGlobal {
 	public void to_enter_the_verification_code() throws AWTException, InterruptedException {
 		Thread.sleep(5000);
 		codePage.getBtnCountryCode().click();
-		List<WebElement> selectCountry = codePage.getSelectCountry();
-		System.out.println(selectCountry.size());	
+		List<WebElement> Countryname = codePage.getCountry().findElements(By.xpath("//li[@class='country']"));
+		for (int i = 0; i < Countryname.size(); i++) {
+			String text = Countryname.get(i).getText();
+			if (text.contains("+91")) {
+				Countryname.get(i).click();
+			}
+		}
+			codePage.getTxtPhoneNumber().sendKeys("8110014035");
+			codePage.getBtnGetCode().click();
+			Thread.sleep(15000);
+			codePage.getTxtPin1().sendKeys("9");
+			codePage.getTxtPin2().sendKeys("0");
+			codePage.getTxtPin3().sendKeys("5");
+			codePage.getTxtPin4().sendKeys("7");
+			codePage.getTxtPin5().sendKeys("7");
+			codePage.getTxtPin6().sendKeys("3");
+			codePage.getBtnDone().click();
+		
+
 	}
 
 	@Then("To click the Done button and check the home page is loaded or not")

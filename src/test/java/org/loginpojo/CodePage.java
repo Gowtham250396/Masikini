@@ -1,7 +1,5 @@
 package org.loginpojo;
 
-import java.util.List;
-
 import org.baseclass.LibGlobal;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,12 +22,12 @@ public class CodePage extends LibGlobal {
 	
 	@FindBy(id = "Vphonenumber")
 	private WebElement txtPhoneNumber;
+	
+	@FindBy(id="country-listbox")
+	private WebElement country;
 
 	@FindBy(xpath = "//div[@role='combobox']")
 	private WebElement btnCountryCode;
-
-	@FindBy(id = "//span[@class='country-name']")
-	private List<WebElement> selectCountry;
 
 	@FindBy(id = "pin1")
 	private WebElement txtPin1;
@@ -51,6 +49,10 @@ public class CodePage extends LibGlobal {
 
 	@FindBy(id = "pinDone")
 	private WebElement btnDone;
+	
+	public WebElement getCountry() {
+		return country;
+	}
 
 	public WebElement getRadioBtnEmail() {
 		return radioBtnEmail;
@@ -72,10 +74,7 @@ public class CodePage extends LibGlobal {
 		return btnCountryCode;
 	}
 
-	public List<WebElement> getSelectCountry() {
-		return selectCountry;
-	}
-
+	
 	public WebElement getTxtPin1() {
 		return txtPin1;
 	}
